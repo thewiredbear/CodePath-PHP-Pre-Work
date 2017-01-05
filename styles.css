@@ -1,0 +1,37 @@
+#topBar{
+  width:100%;
+  height: 20px;
+  background-color: lightgray;
+  text-align: center;
+}
+#mainBox{
+	background-color: AntiqueWhite;
+}
+#contentBox{
+	padding-top: 10px;
+	margin: auto;
+	width: 400px;
+	border: 1px solid black;
+}
+#headingBox{
+	padding-top: 10px;
+	width: inherit;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: Arial;
+}
+#inputBox{
+	padding-top: 20px;
+	padding-left: 10px;	
+}
+#resultBox{
+	border: 1px solid blue;
+	width: 350px;
+	margin: auto;
+	padding-bottom: 10px;
+}
+.result{
+	font-family: Arial;
+	font-style: italic;
+}
