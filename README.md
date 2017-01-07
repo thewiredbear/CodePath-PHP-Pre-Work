@@ -26,8 +26,10 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a couple walkthroughs of implemented user stories:
+
 This is the second version of the app with custom tip option:
 <img src='http://i.imgur.com/V4P61Ns.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 This is the initial app:
 <img src='http://i.imgur.com/O0dfn1n.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
