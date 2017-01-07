@@ -10,12 +10,12 @@
 				<?php
 					if(isset($_POST["submitButton"])){
 						if($_POST["subTotal"]>0){
-							echo "Bill Subtotal : <input type=\"number\" step=\"0.01\" name=\"subTotal\" value=\"".$_POST["subTotal"]."\"><br><br>";
+							echo "Bill Subtotal : <input type=\"number\" min=\"0\" step=\"0.01\" name=\"subTotal\" value=\"".$_POST["subTotal"]."\"><br><br>";
 						}else{
-							echo "Bill Subtotal : <input type=\"number\" step=\"0.01\" name=\"subTotal\"><br><br>";
+							echo "Bill Subtotal : <input type=\"number\" min=\"0\" step=\"0.01\" name=\"subTotal\"><br><br>";
 						}
 					}else{
-							echo "Bill Subtotal : <input type=\"number\" step=\"0.01\" name=\"subTotal\"><br><br>";
+							echo "Bill Subtotal : <input type=\"number\" min=\"0\" step=\"0.01\" name=\"subTotal\"><br><br>";
 						}
 				?>
 				Tip Percentage : <br>
@@ -32,12 +32,16 @@
 								echo "<input type=\"radio\" name=\"val\" value=\"".$percent."\">".$percent."%";
 							}
 					}
-					if(isset($_POST["submitButton"]) && $_POST["subTotal"] && $_POST["val"]=="custom"){
+					if(isset($_POST["submitButton"]) && $_POST["subTotal"] && $_POST["val"]=="custom" && isset($_POST["splits"])){
 						$textInput = "<input type=\"number\" step=\"0.01\" name=\"customTip\" value=\"".$_POST["customTip"]."\">";
 						echo "<input type=\"radio\" name=\"val\" value=\"custom\" checked>"."Custom".$textInput;
+						echo "<br>";
+						echo "Split: <input type=\"number\" name=\"splits\" id=\"splits\" min=\"1\" value=".$_POST["splits"]."> person(s)";
 					}else{
 						$textInput = "<input type=\"number\" step=\"0.01\" name=\"customTip\">";
 						echo "<input type=\"radio\" name=\"val\" value=\"custom\">"."Custom".$textInput;
+						echo "<br>";
+						echo "Split: <input type=\"number\" name=\"splits\" id=\"splits\" min=\"1\" value=".$_POST["splits"]."> person(s)";
 					}
 				?>
 				<br><br>
@@ -57,12 +61,21 @@
 							$tipValue=-1;
 						}
 					}
-					if($givenValue>0 && $tipValue>0){
+					if($givenValue>0 && $tipValue>0 && $_POST["splits"]>0){
 						$finalTip = $givenValue * ($tipValue/100);
-						echo "<div id=\"resultBox\">";
-						echo "<p class=\"result\">Final Tip: ".$finalTip."</p>";
-						echo "<p class=\"result\">Final Bill: ".($givenValue+$finalTip)."</p>";
-						echo "</div>";
+						if($_POST["splits"]=="1"){
+							echo "<div id=\"resultBox\">";
+							echo "<p class=\"result\">Final Tip: ".(round($finalTip,2))."</p>";
+							echo "<p class=\"result\">Final Bill: ".(round($givenValue+$finalTip,2))."</p>";
+							echo "</div>";
+						}else{
+							echo "<div id=\"resultBox\"";
+							echo "<p class=\"result\">Final Tip: ".(round($finalTip,2))."</p>";
+							echo "<p class=\"result\">Final Bill: ".(round($givenValue+$finalTip,2))."</p>";
+							echo "<p class=\"result\">Each Tip: ".(round($finalTip/$_POST["splits"],2))."</p>";
+							echo "<p class=\"result\">Each Total: ".(round(($givenValue+$finalTip)/$_POST["splits"],2))."</p>";
+							echo "</div>";
+						}
 					}
 				}
 			?>
