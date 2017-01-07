@@ -29,15 +29,15 @@ The following **additional** features are implemented:
 
 Here's a couple walkthroughs of implemented user stories:
 
-**1)** This is the final version of the app with splitting option available
+**1)** This is the **final version** of the app with splitting option available
 
 <img src='http://i.imgur.com/912hWwK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-**2)** This is the second version of the app with custom tip option:
+**2)** This is the **second version** of the app with custom tip option:
 
 <img src='http://i.imgur.com/V4P61Ns.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-**3)** This is the initial app:
+**3)** This is the **initial** app:
 
 <img src='http://i.imgur.com/O0dfn1n.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
