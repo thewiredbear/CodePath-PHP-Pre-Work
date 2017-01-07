@@ -17,26 +17,27 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 * [X] Add support for custom tip percentage
-* [ ] Add support for splitting the tip and total
+* [X] Add support for splitting the tip and total
 
 The following **additional** features are implemented:
 
 * [ ] List anything else that you can get done to improve the functionality!
 * [X] User can input float values with decimals limited to only two spaces to prevent from bad UX.
+* [X] Used HTML5 features to implement errors for bad output.
 
 ## Video Walkthrough
 
 Here's a couple walkthroughs of implemented user stories:
 
-**1**This is the final version of the app with splitting option available
+**1)** This is the final version of the app with splitting option available
 
 <img src='http://i.imgur.com/912hWwK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-**2**This is the second version of the app with custom tip option:
+**2)** This is the second version of the app with custom tip option:
 
 <img src='http://i.imgur.com/V4P61Ns.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-**3**This is the initial app:
+**3)** This is the initial app:
 
 <img src='http://i.imgur.com/O0dfn1n.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
