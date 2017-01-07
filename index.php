@@ -10,11 +10,13 @@
 				<?php
 					if(isset($_POST["submitButton"])){
 						if($_POST["subTotal"]>0){
-							echo "Bill Subtotal : <input type=\"text\" name=\"subTotal\" value=\"".$_POST["subTotal"]."\"><br><br>";
+							echo "Bill Subtotal : <input type=\"number\" step=\"0.01\" name=\"subTotal\" value=\"".$_POST["subTotal"]."\"><br><br>";
 						}else{
-							echo "Bill Subtotal : <input type=\"text\" name=\"subTotal\"><br><br>";
+							echo "Bill Subtotal : <input type=\"number\" step=\"0.01\" name=\"subTotal\"><br><br>";
 						}
-					}
+					}else{
+							echo "Bill Subtotal : <input type=\"number\" step=\"0.01\" name=\"subTotal\"><br><br>";
+						}
 				?>
 				Tip Percentage : <br>
 				<?php
@@ -26,7 +28,16 @@
 							}else{
 								echo "<input type=\"radio\" name=\"val\" value=\"".$percent."\">".$percent."%";
 							}
-						}
+						}else{
+								echo "<input type=\"radio\" name=\"val\" value=\"".$percent."\">".$percent."%";
+							}
+					}
+					if(isset($_POST["submitButton"]) && $_POST["subTotal"] && $_POST["val"]=="custom"){
+						$textInput = "<input type=\"number\" step=\"0.01\" name=\"customTip\" value=\"".$_POST["customTip"]."\">";
+						echo "<input type=\"radio\" name=\"val\" value=\"custom\" checked>"."Custom".$textInput;
+					}else{
+						$textInput = "<input type=\"number\" step=\"0.01\" name=\"customTip\">";
+						echo "<input type=\"radio\" name=\"val\" value=\"custom\">"."Custom".$textInput;
 					}
 				?>
 				<br><br>
@@ -36,8 +47,17 @@
 		<?php
 				if(isset($_POST["submitButton"])){
 					$givenValue = $_POST["subTotal"];
-					if($givenValue>0 && $_POST["val"]>0){
-						$tipValue = $_POST["val"];
+					$tipValue = $_POST["val"];
+					if($tipValue=="custom"){
+						$tempTip = (double)$_POST["customTip"];
+						$type = gettype($tempTip);
+						if($type=="double" || $type=="integer"){
+							$tipValue=$tempTip;
+						}else{
+							$tipValue=-1;
+						}
+					}
+					if($givenValue>0 && $tipValue>0){
 						$finalTip = $givenValue * ($tipValue/100);
 						echo "<div id=\"resultBox\">";
 						echo "<p class=\"result\">Final Tip: ".$finalTip."</p>";
